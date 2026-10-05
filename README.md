@@ -59,7 +59,7 @@ The following table summarizes top commercial quantum cloud providers, sorted by
 
 The following open-source frameworks power quantum circuit construction, compiler optimization, differentiable quantum machine learning, and physical system simulations.
 
-Sorted by GitHub Stars (descending):
+Sorted by GitHub_Stars (descending):
 
 - [<img src="https://img.shields.io/github/stars/Qiskit/qiskit?style=social&color=white" alt="Qiskit Stars"/>](https://github.com/Qiskit/qiskit/stargazers) **[Qiskit](https://github.com/Qiskit/qiskit)**  
   IBM's foundational open-source quantum computing SDK (Apache-2.0). The industry standard for building, simulating, and executing quantum circuits on IBM hardware and high-performance classical backends. Features circuit optimization, noise characterization, and pulse-level control. 🛠️
