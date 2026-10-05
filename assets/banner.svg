@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a1a" />
+      <stop offset="50%" stop-color="#121836" />
+      <stop offset="100%" stop-color="#050814" />
+    </linearGradient>
+
+    <!-- Accent Gradients -->
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#4facfe" />
+    </linearGradient>
+    
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7f00ff" />
+      <stop offset="100%" stop-color="#e100ff" />
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Subtle Glow -->
+    <filter id="softGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    /* CSS Animations for Dynamic Aspects */
+    @keyframes spinClockwise {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes spinCounter {
+      0% { transform: rotate(360deg); }
+      100% { transform: rotate(0deg); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.3; transform: scale(0.98); }
+      50% { opacity: 0.7; transform: scale(1.02); }
+    }
+    @keyframes floatParticle {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+    @keyframes waveMotion {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: 100; }
+    }
+
+    .orbit-ring-1 {
+      transform-origin: 1020px 180px;
+      animation: spinClockwise 25s linear infinite;
+    }
+    .orbit-ring-2 {
+      transform-origin: 1020px 180px;
+      animation: spinCounter 18s linear infinite;
+    }
+    .orbit-ring-3 {
+      transform-origin: 1020px 180px;
+      animation: spinClockwise 12s linear infinite;
+    }
+    .quantum-sphere {
+      transform-origin: 1020px 180px;
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+    .bg-wave {
+      stroke-dasharray: 10, 20;
+      animation: waveMotion 15s linear infinite;
+    }
+    .particle {
+      animation: floatParticle 5s ease-in-out infinite;
+    }
+  </style>
+
+  <!-- Background Layer -->
+  <rect width="1200" height="360" fill="url(#bgGrad)" rx="16" />
+  
+  <!-- Subtle Grid Overlay -->
+  <g opacity="0.07" stroke="#ffffff" stroke-width="1">
+    <path d="M0 60 H1200 M0 120 H1200 M0 180 H1200 M0 240 H1200 M0 300 H1200" />
+    <path d="M150 0 V360 M300 0 V360 M450 0 V360 M600 0 V360 M750 0 V360 M900 0 V360 M1050 0 V360" />
+  </g>
+
+  <!-- Background Dynamic Quantum Waves (Behind Content) -->
+  <g opacity="0.25">
+    <path class="bg-wave" d="M -100 280 Q 200 150 500 280 T 1100 280" fill="none" stroke="url(#cyanGrad)" stroke-width="3" />
+    <path class="bg-wave" d="M -50 100 Q 300 220 650 100 T 1250 100" fill="none" stroke="url(#purpleGrad)" stroke-width="2" />
+  </g>
+
+  <!-- Right Side Animated Quantum Bloch Sphere / Orbital Visuals -->
+  <!-- Placed strictly to the right (center 1020, 180) so text on left (x=70) is never obscured -->
+  <g id="quantum-bloch-visual">
+    <!-- Glowing core sphere -->
+    <circle class="quantum-sphere" cx="1020" cy="180" r="75" fill="none" stroke="#00f2fe" stroke-width="2" filter="url(#glow)" opacity="0.5" />
+    <circle cx="1020" cy="180" r="10" fill="#00f2fe" filter="url(#glow)" />
+    
+    <!-- Orbital Rings -->
+    <ellipse class="orbit-ring-1" cx="1020" cy="180" rx="130" ry="45" fill="none" stroke="url(#cyanGrad)" stroke-width="2" opacity="0.7" transform="rotate(-25 1020 180)" />
+    <ellipse class="orbit-ring-2" cx="1020" cy="180" rx="130" ry="45" fill="none" stroke="url(#purpleGrad)" stroke-width="2" opacity="0.7" transform="rotate(35 1020 180)" />
+    <ellipse class="orbit-ring-3" cx="1020" cy="180" rx="130" ry="45" fill="none" stroke="#00ffe1" stroke-width="1.5" opacity="0.5" transform="rotate(85 1020 180)" />
+
+    <!-- Quantum Qubit Nodes on Orbits -->
+    <g class="orbit-ring-1">
+      <circle cx="1150" cy="180" r="6" fill="#00f2fe" filter="url(#glow)" />
+      <circle cx="890" cy="180" r="4" fill="#00f2fe" />
+    </g>
+    <g class="orbit-ring-2">
+      <circle cx="1020" cy="135" r="5" fill="#e100ff" filter="url(#glow)" />
+      <circle cx="1020" cy="225" r="5" fill="#e100ff" />
+    </g>
+  </g>
+
+  <!-- Foreground Content (Left-aligned, clear readability) -->
+  <g transform="translate(70, 0)">
+    <!-- Top Pill / Badge -->
+    <g transform="translate(0, 52)">
+      <rect x="0" y="0" width="280" height="32" rx="16" fill="rgba(0, 242, 254, 0.12)" stroke="url(#cyanGrad)" stroke-width="1.5" />
+      <text x="140" y="21" fill="#00f2fe" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">
+        ⚛️ QUANTUM CLOUD ECOSYSTEM
+      </text>
+    </g>
+
+    <!-- Title -->
+    <text x="0" y="142" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="40" font-weight="800" letter-spacing="-0.5" filter="url(#softGlow)">
+      Awesome Quantum Computing Service
+    </text>
+
+    <!-- Subtitle -->
+    <text x="0" y="186" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18" font-weight="400">
+      Curated List of Commercial Quantum SaaS Platforms &amp; Open-Source Frameworks
+    </text>
+
+    <!-- Feature Tags / Highlights -->
+    <g transform="translate(0, 225)">
+      <!-- Tag 1: QPU Access -->
+      <g transform="translate(0, 0)">
+        <rect width="165" height="36" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+        <text x="16" y="23" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600">☁️ Cloud QPUs</text>
+      </g>
+      
+      <!-- Tag 2: Open Source -->
+      <g transform="translate(180, 0)">
+        <rect width="185" height="36" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+        <text x="16" y="23" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600">⚡ Open-Source SDKs</text>
+      </g>
+
+      <!-- Tag 3: Hybrid Algorithms -->
+      <g transform="translate(380, 0)">
+        <rect width="195" height="36" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+        <text x="16" y="23" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600">🔀 Hybrid Classical-QPU</text>
+      </g>
+    </g>
+
+    <!-- Footer Stats / Meta line -->
+    <text x="0" y="305" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="500">
+      Includes IBM Quantum • AWS Braket • Azure Quantum • Qiskit • PennyLane • Cirq • CUDA-Q
+    </text>
+  </g>
+</svg>
